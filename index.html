@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatBot</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="background-animation"></div>
+
+    <main>
+        <h1 style= " text-transform: uppercase;">Welcome To My Chatbot site!</h1>
+        <p>A quick and approachable assistance to aid you in various kind of task assigned to it.</p>
+    </main>
+
+    <div id="chatbot-icon">💬</div>
+    <div id="chatbot-container" class="hidden">
+      <div id="chatbot-header">
+        <span>ChatBot</span>
+        <button id="close-btn">&times;</button>
+      </div>
+      <div id="chatbot-body">
+        <div id="chatbot-messages"></div>
+      </div>
+      <div id="chatbot-input-container">
+        <input type="text" id="chatbot-input" placeholder="Type a message" />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,257 @@
+/* General Styles */
+/* General Styles for the Body */
+body {
+    /* Set a dark background color as a base */
+    background-color: #121212;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    overflow: hidden; /* Prevent scrollbars from showing up due to the background */
+    height: 100vh; /* Make sure the body takes up the full viewport height */
+    position: relative; /* Position relative for the background pseudo-element */
+}
+
+/* Background Animation Container */
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background: #121212; /* dark base for contrast */
+}
+
+/* Glowing animated circles */
+.background-animation::before,
+.background-animation::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(150px);
+  animation: float 20s infinite ease-in-out alternate;
+}
+
+/* First blob (red/pink) */
+.background-animation::before {
+  background: rgba(255, 0, 100, 0.6);
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+/* Second blob (blue/purple) */
+.background-animation::after {
+  background: rgba(0, 150, 255, 0.6);
+  bottom: -100px;
+  right: -100px;
+  animation-delay: 3s;
+}
+
+/* Floating keyframes */
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(3);
+  }
+  50% {
+    transform: translate(200px, -150px) scale(1);
+  }
+  100% {
+    transform: translate(-150px, 100px) scale(1);
+  }
+}
+
+/* Main Content */
+main {
+  position: relative;
+  z-index: -1; /* keep it above background */
+  text-align: center;
+  padding-top: 20vh;
+}
+
+main h1 {
+  color: #ff1744;
+  font-family: "Jokerman", cursive;
+  font-size: 4rem;
+  text-shadow: 0px 0px 10px rgba(255, 0, 100, 0.7);
+  animation: glow 2s infinite alternate;
+}
+
+main p {
+  color: #00e5ff;
+  font-family: "Jokerman", cursive;
+  font-size: 1.8rem;
+  text-shadow: 0px 0px 8px rgba(0, 200, 255, 0.6);
+}
+
+/* Glowing text animation */
+@keyframes glow {
+  from {
+    text-shadow: 0px 0px 10px rgba(223, 209, 21, 0.925);
+  }
+  to {
+    text-shadow: 0px 0px 20px rgb(37, 153, 66);
+  }
+}
+
+
+/* Floating Chat Icon */
+#chatbot-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: blue;
+  color: white;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+#chatbot-icon:hover {
+  background-color: #b71c1c;
+  transform: scale(1.1);
+}
+
+/* Chatbot Container */
+#chatbot-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 350px;
+  height: 450px;
+  background-color: #1f1f1f;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Hide Chatbot Initially */
+.hidden {
+  display: none !important;
+}
+
+/* Chatbot Header */
+#chatbot-header {
+  background-color: blue;
+  color: white;
+  padding: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+#close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Chatbot Body */
+#chatbot-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+/* Chatbot Messages */
+#chatbot-messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  max-width: 85%;
+}
+
+.message.user {
+  background-color: blue;
+  color: white;
+  align-self: flex-end;
+}
+
+.message.bot {
+  background-color: #333;
+  color: white;
+  align-self: flex-start;
+}
+
+/* Input Section */
+#chatbot-input-container {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #444;
+  background-color: #2c2c2c;
+}
+
+#chatbot-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+}
+
+#send-btn {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#send-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* Media query for screens with a maximum width of 768px (common for tablets and mobile) */
+@media (max-width: 768px) {
+  main {
+    padding-top: 10vh; /* Reduce top padding for smaller screens */
+    margin-right: 0; /* Remove the right margin on smaller devices */
+    padding: 0 20px; /* Add some left and right padding for content spacing */
+  }
+}
+
+/* Media query for screens with a maximum width of 480px (common for mobile phones) */
+@media (max-width: 480px) {
+  #chatbot-container {
+    bottom: 0; /* Move the chatbot to the very bottom of the screen */
+    right: 0; /* Align it to the right edge */
+    width: 100%; /* Make the chatbot take up the full width of the screen */
+    height: 80vh; /* Adjust height to be a percentage of the viewport height */
+    border-radius: 0; /* Remove border-radius for a full-screen mobile look */
+  }
+
+  /* Adjust styles for the chatbot input and messages to fit the new size */
+  #chatbot-messages {
+    padding-bottom: 70px; /* Add more padding to prevent the last message from being hidden by the input container */
+  }
+  
+  #chatbot-header {
+    border-radius: 0; /* Remove border-radius on header */
+  }
+}
